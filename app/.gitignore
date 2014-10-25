@@ -1,0 +1,9 @@
+
+# vim
+*.sw[o-p]
+
+# Grails?
+/build
+
+# Other
+/tmp
