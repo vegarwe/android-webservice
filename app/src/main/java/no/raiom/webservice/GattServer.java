@@ -68,6 +68,7 @@ public class GattServer {
         public void onCharacteristicWriteRequest(BluetoothDevice device, int requestId, BluetoothGattCharacteristic characteristic, boolean preparedWrite, boolean responseNeeded, int offset, byte[] value) {
             gattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, value);
             if (characteristic.getUuid().equals(WEBSERVICE_BODY)) {
+                Log.i("Fjase", "sending web request");
                 HttpPutAsyncTask httpPut = new HttpPutAsyncTask(GattServer.this, new String(value));
                 httpPut.execute();
             }
